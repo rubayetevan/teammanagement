@@ -20,6 +20,7 @@ class _MainPageState extends State<MainPage> {
   ];
 
   BottomNavBloc bloc;
+  int _currentIndex = 0;
 
   @override
   void didChangeDependencies() {
@@ -43,8 +44,6 @@ class _MainPageState extends State<MainPage> {
     return StreamBuilder(
         stream: bloc.pageIndex,
         builder: (context, snapshot) {
-          print("snapshot data = ${snapshot.data}");
-          int _currentIndex = 0;
           if (snapshot.hasData) {
             _currentIndex = snapshot.data;
           }
