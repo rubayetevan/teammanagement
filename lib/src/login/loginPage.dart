@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teammanagement/src/blocs/loginBloc.dart';
-import 'package:teammanagement/src/blocs/providers/loginProvider.dart';
+import 'package:teammanagement/src/blocs/provider.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void didChangeDependencies() {
-    bloc = LoginProvider.of(context);
+    bloc = Provider.loginBloc(context);
     super.didChangeDependencies();
   }
 

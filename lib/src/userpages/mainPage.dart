@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teammanagement/src/blocs/bottomNavBloc.dart';
-import 'package:teammanagement/src/blocs/providers/bottomNavProvider.dart';
+import 'package:teammanagement/src/blocs/provider.dart';
 import 'homePage.dart';
 import 'notePage.dart';
 import 'summaryPage.dart';
@@ -24,7 +24,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   void didChangeDependencies() {
-    bloc = BottomNavProvider.of(context);
+    bloc = Provider.bottomNavBloc(context);
     super.didChangeDependencies();
   }
 

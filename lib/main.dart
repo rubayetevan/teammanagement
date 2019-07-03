@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teammanagement/src/blocs/providers/bottomNavProvider.dart';
-import 'package:teammanagement/src/blocs/providers/loginProvider.dart';
+import 'package:teammanagement/src/blocs/provider.dart';
 import 'package:teammanagement/src/login/loginPage.dart';
 
 
@@ -17,16 +16,14 @@ class TeamManageApp extends StatelessWidget {
           if (snapshot.hasData) {
             isLoggedIn = snapshot.data;
           }
-          return BottomNavProvider(
+          return Provider(
             child: MaterialApp(
               title: 'BdjobsTeam',
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 primarySwatch: Colors.purple,
               ),
-              home:LoginProvider(
-                child: LoginPage(),
-              ),
+              home:LoginPage(),
               //home: OrderListPage(),
             ),
           );
