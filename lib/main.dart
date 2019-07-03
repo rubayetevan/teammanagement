@@ -19,7 +19,7 @@ class TeamManageApp extends StatelessWidget {
             title: 'BdjobsTeam',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              primarySwatch: Colors.deepOrange,
+              primarySwatch: Colors.purple,
             ),
             home:LoginPage(),
             //home: OrderListPage(),

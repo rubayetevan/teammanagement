@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:teammanagement/src/blocs/loginBloc.dart';
 import 'package:teammanagement/src/util/globalWidgets.dart';
 
+import '../routes.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,9 @@ class HomePage extends StatelessWidget {
         tooltip: 'Add work',
         backgroundColor: Colors.green,
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          routes.routeToWorkAddPage(context);
+        },
       ),
       body: Container(
         color: Colors.white10,

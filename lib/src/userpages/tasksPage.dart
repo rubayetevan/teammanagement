@@ -262,10 +262,6 @@ class TaskPage extends StatelessWidget{
                   alignment: Alignment.centerRight,
                 ),
                 child: taskViewWidget('t','y','o','high',16,16,5,5),
-
-
-
-
               );
             },
             itemCount: 10,
