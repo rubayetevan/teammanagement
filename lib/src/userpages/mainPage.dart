@@ -1,17 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:teammanagement/src/blocs/userBloc.dart';
+import 'package:teammanagement/src/blocs/bottomNavBloc.dart';
+import 'package:teammanagement/src/blocs/providers/bottomNavProvider.dart';
 import 'homePage.dart';
 import 'notePage.dart';
 import 'summaryPage.dart';
 import 'tasksPage.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
   final List<Widget> _children = [
     HomePage(),
     TaskPage(),
     NotePage(),
     SummaryPage()
   ];
+
+  BottomNavBloc bloc;
+
+  @override
+  void didChangeDependencies() {
+    bloc = BottomNavProvider.of(context);
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    bloc.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +41,7 @@ class MainPage extends StatelessWidget {
 
   Widget bottomBar() {
     return StreamBuilder(
-        stream: userBloc.pageIndex,
+        stream: bloc.pageIndex,
         builder: (context, snapshot) {
           print("snapshot data = ${snapshot.data}");
           int _currentIndex = 0;
@@ -28,10 +49,9 @@ class MainPage extends StatelessWidget {
             _currentIndex = snapshot.data;
           }
           return Scaffold(
-
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
-              onTap: userBloc.changePageIndex,
+              onTap: bloc.changePageIndex,
               currentIndex: _currentIndex,
               // this will be set when a new tab is tapped
               items: [
@@ -53,6 +73,4 @@ class MainPage extends StatelessWidget {
           );
         });
   }
-
-
 }

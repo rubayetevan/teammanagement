@@ -1,7 +1,7 @@
 import 'package:rxdart/rxdart.dart';
-import 'package:teammanagement/src/blocs/userDataValidators.dart';
+import 'package:teammanagement/src/blocs/validators/userDataValidators.dart';
 
-class UserBloc extends UserdataValidators{
+class BottomNavBloc extends BottomNavIndexValidators{
 
   final _pageIndex = BehaviorSubject<int>();
   Stream<int> get pageIndex => _pageIndex.stream.transform(validateIndex);
@@ -14,5 +14,3 @@ class UserBloc extends UserdataValidators{
 
 
 }
-
-final userBloc = UserBloc();

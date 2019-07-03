@@ -1,49 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:teammanagement/src/blocs/loginBloc.dart';
+import 'package:teammanagement/src/blocs/providers/loginProvider.dart';
 
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
 
-class LoginPage extends StatelessWidget {
+class _LoginPageState extends State<LoginPage> {
+  LoginBloc bloc;
+
+  @override
+  void didChangeDependencies() {
+    bloc = LoginProvider.of(context);
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    bloc.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: ListView(
-            padding: EdgeInsets.all(20.0),
-            children: <Widget>[
-              SizedBox(
-                height: 40.0,
-              ),
-              _logoSVG(),
-              SizedBox(
-                height: 40.0,
-              ),
-              _headingText(),
-              SizedBox(
-                height: 20.0,
-              ),
-              _usernameTextField(),
-              SizedBox(
-                height: 20.0,
-              ),
-              _passwordTextField(),
-              SizedBox(
-                height: 20.0,
-              ),
-              _loginButton(),
-              SizedBox(
-                height: 100.0,
-              ),
-            ],
-          )),
+        padding: EdgeInsets.all(20.0),
+        children: <Widget>[
+          SizedBox(
+            height: 40.0,
+          ),
+          _logoSVG(),
+          SizedBox(
+            height: 40.0,
+          ),
+          _headingText(),
+          SizedBox(
+            height: 20.0,
+          ),
+          _usernameTextField(),
+          SizedBox(
+            height: 20.0,
+          ),
+          _passwordTextField(),
+          SizedBox(
+            height: 20.0,
+          ),
+          _loginButton(),
+          SizedBox(
+            height: 100.0,
+          ),
+        ],
+      )),
     );
   }
 
   Widget _usernameTextField() {
     return StreamBuilder(
-      stream: loginBloc.username,
+      stream: bloc.username,
       builder: (context, snapshot) {
         return TextField(
-          onChanged: loginBloc.changeUsername,
+          onChanged: bloc.changeUsername,
           decoration: InputDecoration(
             border: OutlineInputBorder(),
             labelText: 'Enter your username',
@@ -56,10 +75,10 @@ class LoginPage extends StatelessWidget {
 
   Widget _passwordTextField() {
     return StreamBuilder(
-      stream: loginBloc.password,
+      stream: bloc.password,
       builder: (context, snapshot) {
         return TextField(
-          onChanged: loginBloc.changePassword,
+          onChanged: bloc.changePassword,
           obscureText: true,
           decoration: InputDecoration(
             border: OutlineInputBorder(),
@@ -73,13 +92,13 @@ class LoginPage extends StatelessWidget {
 
   Widget _loginButton() {
     return StreamBuilder(
-      stream: loginBloc.loginDataValid,
+      stream: bloc.loginDataValid,
       builder: (context, snapshot) {
         return RaisedButton(
           onPressed: snapshot.hasData
               ? () {
-            loginBloc.submitLoginData(context);
-          }
+                  bloc.submitLoginData(context);
+                }
               : null,
           child: Text('Login'),
         );
@@ -88,11 +107,7 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _logoSVG() {
-    return Container(
-        height: 100.0,
-        width: 100.0,
-        child: Text('Hello')
-    );
+    return Container(height: 100.0, width: 100.0, child: Text('Hello'));
   }
 
   Widget _headingText() {

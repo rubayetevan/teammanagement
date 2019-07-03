@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../routes.dart';
-import 'loginValidators.dart';
+import 'package:teammanagement/src/blocs/validators/loginValidators.dart';
 
 class LoginBloc extends LoginValidators {
 
@@ -69,5 +69,3 @@ class LoginBloc extends LoginValidators {
   }
 
 }
-
-final loginBloc = LoginBloc();

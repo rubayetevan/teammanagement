@@ -1,6 +1,6 @@
 import 'dart:async';
 
-class UserdataValidators{
+class BottomNavIndexValidators{
   final validateIndex =
   StreamTransformer<int, int>.fromHandlers(handleData: (pageIndex, sink) {
     if (pageIndex != null) {

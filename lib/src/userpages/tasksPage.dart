@@ -24,7 +24,7 @@ class TaskPage extends StatelessWidget{
                 color: Colors.white,
               ),
               onPressed: () {
-               loginBloc.showLogoutAlert(context);
+               //loginBloc.showLogoutAlert(context);
               },
             )
           ],
