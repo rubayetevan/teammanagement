@@ -20,6 +20,7 @@ class Provider extends InheritedWidget{
   static BottomNavBloc bottomNavBloc (BuildContext context){
     return (context.inheritFromWidgetOfExactType(Provider)as Provider)._bottomNavBloc;
   }
+
   static LoginBloc loginBloc (BuildContext context){
     return (context.inheritFromWidgetOfExactType(Provider)as Provider)._loginBloc;
   }
